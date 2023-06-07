@@ -17,9 +17,14 @@ function App() {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin":  "GET,HEAD,OPTIONS,POST,PUT",
+            "Access-Control-Allow-Origin": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
+
           },
         }
       );
+
       console.log("the response is: ", response.data.compatibleAccelerators);
       console.log("the layers are: ", response.data.layers);
       setCompatibleAccelerators(response.data.compatibleAccelerators);
