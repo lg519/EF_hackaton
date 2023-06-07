@@ -16,4 +16,4 @@ model = tf.keras.Sequential(
 )
 
 # Save the model in TensorFlow's SavedModel format
-model.save("my_model.pb")
+model.save("model_1")

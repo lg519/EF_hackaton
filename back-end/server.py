@@ -17,14 +17,14 @@ def upload_keras():
     file = request.files["file"]
     filename = file.filename
     print(f"Received filename: {filename}")
-    filepath = os.path.join("my_model.pb", filename)
+    filepath = os.path.join("uploaded_model", filename)
     #filepath = "my_model.pb"
     print(f"Saving file to: {filepath}")
     file.save(filepath)
 
     print(f"model saved to: {filepath}")
 
-    model = tf.keras.models.load_model("my_model.pb")
+    model = tf.keras.models.load_model("uploaded_model")
 
     print(f"model loaded")
     os.remove(filepath)
@@ -33,7 +33,7 @@ def upload_keras():
     print(layer_names)
 
     accelerator_1_layers = ["conv2d", "max_pooling2d"]
-    accelerator_2_layers = ["conv2d", "max_pooling2d", "batch_normalization"]
+    accelerator_2_layers = ['conv2d', 'batch_normalization', 'max_pooling2d', 'conv2d_1', 'batch_normalization_1', 'max_pooling2d_1', 'flatten', 'dense']
     accelerator_3_layers = ["conv2d", "max_pooling2d", "batch_normalization"]
 
     compatible_accelerators = []
