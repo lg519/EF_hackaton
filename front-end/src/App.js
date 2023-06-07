@@ -1,33 +1,39 @@
 // App.js
 import React, { useState } from "react";
 import axios from "axios";
-import "./App.css"; // Importing the new CSS file
+import "./App.css";
 
 function App() {
-  const [size, setSize] = useState(null);
-  const [imageToShow, setImageToShow] = useState(null);
+  const [compatibleAccelerators, setCompatibleAccelerators] = useState([]);
 
   const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    const response = await axios.post("http://localhost:8000/file", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    setSize(response.data.size);
-    console.log(response.data.imageToShow);
-    setImageToShow(response.data.imageToShow);
+    try {
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await axios.post(
+        "http://localhost:8000/file",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("the response is: ", response.data.compatibleAccelerators);
+      console.log("the layers are: ", response.data.layers);
+      setCompatibleAccelerators(response.data.compatibleAccelerators);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="App">
-      <h2>Upload a .tflite file</h2>
+      <h2>Upload a .pb file</h2>
       <input type="file" onChange={handleFileUpload} />
-      {size && <p>The size of the uploaded .tflite file is: {size} KB</p>}
       <div className="accelerator-boxes">
-        {imageToShow === 1 && (
+        {compatibleAccelerators.includes(1) && (
           <div className="accelerator">
             <img
               src="/images/CORAL-MICRO/img_1.jpg"
@@ -36,7 +42,7 @@ function App() {
             <p>Hardware Accelerator 1</p>
           </div>
         )}
-        {imageToShow === 2 && (
+        {compatibleAccelerators.includes(2) && (
           <div className="accelerator">
             <img
               src="/images/CORAL-MICRO/img_2.jpg"
@@ -45,7 +51,7 @@ function App() {
             <p>Hardware Accelerator 2</p>
           </div>
         )}
-        {imageToShow === 3 && (
+        {compatibleAccelerators.includes(3) && (
           <div className="accelerator">
             <img
               src="/images/CORAL-MICRO/img_3.jpg"
