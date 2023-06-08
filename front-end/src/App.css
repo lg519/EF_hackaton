@@ -1,27 +1,130 @@
 /* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 .App {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
-  padding: 20px;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background: #ffffff;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  /* Increased padding */
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  font-family: 'Poppins', sans-serif;
+  /* Changed font-family */
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 15px 30px;
+  /* Increased padding */
+  font-size: 1.3em;
+  /* Increased font-size */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #3465a4;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #204a87;
+}
+
+.App h2 {
+  font-size: 2em;
+  /* Increased font-size */
+  color: #333333;
+  margin-bottom: 20px;
 }
 
 .App input[type="file"] {
-  margin: 20px 0;
+  margin: 30px 0;
+  padding: 15px 20px;
+  /* Increased padding */
+  font-size: 1.2em;
+  /* Increased font-size */
+  color: #333333;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.App input[type="file"]:hover {
+  background-color: #e5e5f5;
+  border-color: #bbbbbb;
 }
 
 .accelerator-boxes {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .accelerator {
-  width: 150px;
+  width: 180px;
+  padding: 20px;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.accelerator p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #333333;
 }
 
 .accelerator img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  width: 100%;
+  background-color: #3465a4;
+  color: #ffffff;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  /* Changed from center to flex-start */
+  align-items: center;
+  box-sizing: border-box;
+  /* Add this to prevent padding from increasing total width */
+}
+
+.header h1 {
+  margin-left: 20px;
+  /* Add some space between the text and the left edge of the screen */
+}
+
+a {
+  text-decoration: none;
 }
